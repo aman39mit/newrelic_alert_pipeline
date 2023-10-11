@@ -1,0 +1,47 @@
+name: applying
+on: 
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'creating newrelic'
+        required: true
+        default: 'apply'
+        options:
+          - 'apply'
+          - 'destroy'
+env:
+  BUCKET: test-bucket-00006
+  TFSTATE_FILE: terraform.tfstate
+  aws_region: us-east-1
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
+        
+jobs:
+  job1:
+    runs-on : ubuntu-latest
+    steps:
+      - name: "Setup - Checkout"
+        uses: actions/checkout@v2.1.0
+      - name: "Setup - Terraform CLI"
+        uses: hashicorp/setup-terraform@v1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+
+
+      - name: terraform init
+        run: |
+          
+      - name: terraform plan
+        run: |
+          terraform plan
+      - name: ${{github.event.inputs.action}}
+        run: 
+          terraform ${{github.event.inputs.action}} -auto-approve
