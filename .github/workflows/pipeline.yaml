@@ -10,7 +10,7 @@ on:
           - 'apply'
           - 'destroy'
 env:
-  BUCKET: test-bucket-00006
+  BUCKET: bucket-new-my
   TFSTATE_FILE: terraform.tfstate
   aws_region: ap-south-1
   # pull_request:

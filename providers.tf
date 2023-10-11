@@ -8,7 +8,7 @@ terraform {
 
 # Configure the New Relic provider
 provider "newrelic" {
-  account_id = 3930396
-  api_key = "NRAK-Z4QE9XQQUZB16JYI5AU38B4UDK3"   # Usually prefixed with 'NRAK'
+  account_id = 4176494
+  api_key = "NRAK-X7B7YN275VT0MX4J0CBM8QUVVW5"   # Usually prefixed with 'NRAK'
   region = "US"                    # Valid regions are US and EU
 }
