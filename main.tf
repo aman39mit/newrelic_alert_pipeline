@@ -32,7 +32,7 @@ resource "newrelic_nrql_alert_condition" "apdex_condition" {
   }
 
   nrql {
-    query             = "SELECT apdex(duration, t: ${var.apdex_t}) FROM Transaction WHERE appName = '${var.application_name}' AND accountId = ${var.account_id}"
+    query             = "SELECT average(host.memoryUsedPercent) AS 'Memory used %' FROM Metric WHERE `entityGuid` = 'NDE3NjQ5NHxJTkZSQXxOQXw4NzY1NDE3NzY4MzIxNzY5MjIw'"
     //evaluation_offset = 3
   }
 }
